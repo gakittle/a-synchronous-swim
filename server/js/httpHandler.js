@@ -5,6 +5,6 @@ module.exports = (req, res) => {
   res.writeHead(200, headers);
   var directions = ['up', 'down', 'left', 'right'];
   var move = directions[Math.floor(Math.random() * 4)];
-  res.end(JSON.stringify(move));
+  res.end(JSON.stringify({ move: move }));
   return;
 };

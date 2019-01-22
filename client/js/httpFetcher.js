@@ -3,11 +3,10 @@ const fetcher = () => {
   $.ajax({
     url: serverUrl,
     type: 'GET',
-    contentType: 'application/json',
+    dataType: 'json',
     success: data => {
-      console.log(data);
-      SwimTeam.move(data);
-      console.log(`Sliiiiide to the ${data}. Take it back now y'all.`);
+      SwimTeam.move(data.move);
+      console.log(`Sliiiiide to the ${data.move}. Take it back now y'all.`);
     },
     error: () => {
       console.log('error: failed to retrieve command');
