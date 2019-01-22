@@ -7,7 +7,7 @@ $('body').on('keydown', event => {
 });
 
 $('button').on('click', () => {
-  fetcher();
+  clickRandomizer();
 });
 
 console.log('Client is running in the browser!');
