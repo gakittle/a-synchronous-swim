@@ -7,8 +7,8 @@ const clickRandomizer = () => {
     success: data => {
       console.log(`Queueing ${data}...`);
     },
-    error: err => {
-      console.log('error: failed to send command', err);
+    error: (request, status, err) => {
+      console.log('error: failed to send command greg', err);
     }
   });
 };
@@ -18,17 +18,18 @@ const fetcher = () => {
   $.ajax({
     url: serverUrl,
     method: 'GET',
-    dataType: 'json',
-    success: data => {
+    dataType: 'json'
+  })
+    .done(data => {
       data.forEach(move => {
-        SwimTeam.move(move);
-        console.log(`Sliiiiide to the ${move}. Take it back now y'all.`);
+        if (move) {
+          SwimTeam.move(move);
+        }
       });
-    },
-    error: () => {
+    })
+    .fail(() => {
       console.log('error: failed to retrieve command');
-    }
-  });
+    });
 };
 
 setInterval(fetcher, 100);

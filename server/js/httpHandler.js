@@ -9,7 +9,7 @@ module.exports = (req, res) => {
     var directions = ['up', 'down', 'left', 'right'];
     var move = directions[Math.floor(Math.random() * 4)];
     messages.enqueue(move);
-    res.end(move);
+    res.end(JSON.stringify(move));
   } else if (req.method === 'GET') {
     headers['Content-Type'] = 'application/json';
     res.writeHead(200, headers);
